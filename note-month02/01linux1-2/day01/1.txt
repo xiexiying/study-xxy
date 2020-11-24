@@ -1,0 +1,4 @@
+绝对路径：/home/tarena/note-month02/day01
+相对路径：../home/month01/day01/
+
+

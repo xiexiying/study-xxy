@@ -1,0 +1,11 @@
+
+delimiter $$
+create function get_res(id1 int,id2 int)
+returns int
+begin
+declare score1 float;
+declare score2 float;
+set score1=(select score from cls where id=id1);
+select score from cls where id =id2 into score2;
+return (score2-score1);
+end $$

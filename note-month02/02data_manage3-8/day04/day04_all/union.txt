@@ -1,0 +1,233 @@
+问题1: 主目录下 有个 month01->exercise01
+
+绝对路径： /home/tarena/month01/exercise01.py
+
+问题2： 你在qtx中，找到homework
+     主目录 |---qtx（文件夹中）
+           |---month01---code--day01--homework
+
+相对路径:  ../month01/code/day01/homework
+
+较难命令示例：
+grep:
+grep "hello" hello.py
+print("hello world")
+
+find
+在 当前目录下 查找demo12.py这个文件
+find . -name demo12.py
+./Month01/code/day18/demo12.py
+
+管道
+查看当前目录下有没有 hello 文件
+ls | grep "hello"
+hello.py
+
+查看当前文件夹下有几个文件
+ls | wc -w
+
+zip
+zip file.zip *file*
+zip -r dir.zip dir1
+
+tar
+tar -cjf dir.tar.bz2 dir
+
+作业 ： 1. 命令，自己练习一遍
+       2. markdown文档 学习并使用
+       3. 复习节奏   类和函数的设计使用
+
+
+
+
+
+
+
+
+
+
+
+前情回顾
+
+1. 什么是操作系统 OS
+
+2. Linux 操作系统
+
+   特点： 开源  网络功能强大  跨平台  多用户
+   构成： 内核  文件系统   shell命令  应用
+   使用： 服务器  嵌入式设备  桌面系统
+
+3. 文件系统
+
+    LINUX文件系统结构 ： 树形结构
+    文件位置表达 ：  绝对路径  相对路径
+
+4. LINUX命令  （shell命令）
+
+   man
+   ls  cd  mkdir  rm  touch cat grep  cp  mv
+   zip  tar
+
+   通配符 ：  *
+   管道： |
+
+
+疑难命令实例
+
+chmod 数字修改文件权限
+chmod  777  2.txt
+
+ln 软连接，源文件绝对路径
+ln -s /home/tarena/month02/day02/hello.py  hello
+
+
+练习1： 使用vi编写一个程序
+写一个求函数运行时间的装饰器
+
+提示 ：  import time
+
+        def fun():
+            pass
+
+        start = time.time()
+        fun()
+        end  = time.time()
+        end - start()
+
+plan : 求 1 到 20 20个整数的乘积结果
+
+
+
+用户名： root
+IP： 124.71.162.72
+密码： Aid_2009
+
+查看同桌IP： ifconfig
+你可以用：  ssh  tarena@同桌IP
+
+
+作业： 1. 命令使用一遍
+      2. 总结Linux使用内容
+      3. 使用vi编写  --》 求100000以内质数之和
+
+
+
+
+
+前情回顾
+
+1. LINUX命令
+
+   权限管理： sudo  chmod
+
+   显示 ： echo  date  ln   shutdown
+
+   输出重定向 ： >   >>
+
+2. vi 编辑器
+
+   插入模式   命令模式   底行模式
+
+3. 用户添加
+
+   useradd
+   passwd
+   sudo vi /etc/sudoers  增加管理员权限
+   sudo vi /etc/passwd   改命令解释器
+
+   userdel -r
+
+4. 软件安装   .deb
+
+   apt update
+   apt install
+   apt remove
+
+5. ssh 远程访问
+
+   ssh  user@ip      (ifconfig)
+
+   scp
+
+   秘钥传输 ： ssh-keygen  --> id-rsa  id-rsa.pub
+
+             cat id-rsa.pub
+
+             复制公钥内容
+
+             远程链接对方  ssh
+
+             进入 对方 .ssh --> authorized_keys
+
+             将复制内容追加进去 echo "xxxx" >> au...
+
+
+Linux 总结：
+
+   1. LINUX的系统构成，每部分功能
+   2. Linux的特点和使用场景
+   3. LINUX常用命令
+
+      基础命令  压缩解压  软件安装
+
+   4. 用户的创建
+   5. 使用ssh远程访问服务器
+   6. 使用vi进行简单的文本编辑
+   7. 文件系统结构  怎么在终端运行程序
+
+   熟练使用LINUX操作系统进行开发工作
+
+鸟哥私房菜
+
+
+练习2： 编写一个函数，参数传入一个单词，返回这个
+单词的对应解释
+
+提示 ： 利用dict.txt文件完成
+       读取文件内容后，利用字符串处理函数完成
+       单词和解释的分离（split）
+       将分离出来的单词和参数（目标单词）比对
+
+练习3： 编写一个函数，传入一个文件名(可以带路径)，
+将这个传入的文件 拷贝到 函数的执行目录下
+
+注意： 不确定要拷贝的文件类型
+
+提示 ： 打开源文件 和 拷贝文件，从源文件读写入新文件
+       可能文件很大，最好不要一次读取全部文件内容
+
+def fun(path):
+    xxxxx
+fun("/home/tarena/abc.txt")
+
+
+练习4： 编写一个程序， 运行后在my.log文件中不间断写入
+如下内容：
+    1. 2020-01-01  10:10:10
+    2. 2020-01-01  10:10:12
+    3. 2020-01-01  10:10:14
+    4. 2020-01-01  10:10:16
+    5. 2020-01-01  10:11:29
+    6. 2020-01-01  10:11:31
+每隔2s写入一次,要求实时显示每次写入的内容，程序不间断循环
+执行,当程序结束后，如果重新启动，序号能够衔接
+
+提示： 生成当前时间  import time   localtime() sleep()
+      用什么方式打开？  重新启动后序号怎么确定？
+
+作业： 1. 重点函数巩固 open  read  write  seek
+      2. 重点代码自己会写 （文件拷贝）
+      3. 练习4完成
+
+      巩固练习:
+      编写一个函数，传入一个列表，列表中为之前几天的
+      课上文档（含路径） ,将列表中文件合成1个 union.txt
+
+
+      def fun(list_):
+          pass
+
+      fun(["day01/1.txt","day02/2.txt"..])
+
+
+

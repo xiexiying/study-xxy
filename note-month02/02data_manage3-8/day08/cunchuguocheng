@@ -1,0 +1,4 @@
+create procedure st2()
+begin
+select * from cls limit 3;
+end $$

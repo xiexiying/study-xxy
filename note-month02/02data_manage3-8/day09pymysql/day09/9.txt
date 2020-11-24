@@ -1,0 +1,57 @@
+前情回顾
+
+1.视图
+  作用： 简化复杂操作，提取部分数据，数据结构清晰，提高安全性
+
+  create view [view_name] as [select .....];
+  drop view [view]
+
+2.函数和存储过程
+
+  函数: 有返回值  获取一个结果
+  存储过程： 没有返回值  注重执行过程所做的事情
+
+  delimiter  $$
+
+  create function fun() returns [type]
+  begin
+   函数体;
+   return val;
+  end
+
+  create procedure proc()
+  begin
+   declare a int;
+   函数体;
+  end
+
+  set @a=0;
+
+3. 事务控制  ACID
+
+   begin   commit   rollback
+
+   原子性  一致性  持久性  隔离性
+
+   隔离级别： 读未提交  读已提交  可重复读  串行化
+
+
+练习1： 输入一个学生的姓名，获取该学生信息
+
+练习2 :  创建一个数据库  dict
+        创建数据表  words --> id  word  mean
+        将单词本 dict.txt 中单词插入到该数据表
+
+思路： 使用mysql终端完成库和表的创建
+      编写程序插入数据
+        1. 将每一行的单词和解释提取出来
+        2. 循环使用个execute 或直接使用executemany插入
+
+
+作业：　1. 数据库内容总结
+　　　　2. 数据处理　整理
+      3. 文件存储
+      4.  类　　　函数
+
+
+

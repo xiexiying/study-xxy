@@ -1,0 +1,7 @@
+file=open("myfile.py","w+")
+file.write("你好世界")
+file.seek(6,0)
+# data=file.read()
+file.write("shijie")
+# print(data)
+file.close()
